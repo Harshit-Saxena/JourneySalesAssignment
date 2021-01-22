@@ -1,0 +1,25 @@
+<apex:page controller="opportunityList" showHeader="true" sidebar="true">
+    <apex:form>
+        <apex:pageBlock>
+            <apex:pageBlockButtons location="top">
+                <apex:inputText value="{!searchName}" maxlength="15" />
+                <apex:commandButton value="Search" action="{!search}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!Opp}" var="o" id="ol">
+                <apex:column>
+                    <apex:outputLink value="/{!o.id}/e?retURL=/apex/{!$CurrentPage.Name}" style="font-weight:bold">{!o.Name}</apex:outputLink>
+                </apex:column>&nbsp;|&nbsp;
+                <!-- <apex:column value="{!o.name}" /> -->
+                <apex:column value="{!o.CloseDate}" />
+                <apex:column value="{!o.StageName}" />
+
+            </apex:pageBlockTable>
+            <apex:pageBlockTable value="{!searchResults}" var="sr" id="srr">
+                <apex:column value="{!sr.name}" />
+                <apex:column value="{!sr.CloseDate}" />
+                <apex:column value="{!sr.StageName}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+
+</apex:page>
