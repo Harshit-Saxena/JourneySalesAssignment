@@ -1,5 +1,6 @@
 # JourneySalesAssignment
-Task given by JourneySales Developer- Mr. Sandeep 
+
+Task given by JourneySales Developer- Mr. Sandeep
 
 Part 1 ---
 
@@ -9,8 +10,7 @@ Part 1 ---
 4. Provide search box to filter on 'Opportunity name' without refreshing page.
 5. Write Test Class for it.
 
-
-Part 2 --- 
+Part 2 ---
 
 1. Create custom object with label 'Demo Object' and API name Demo_Object.
 2. Create a 'text' field with label 'Category'.
@@ -18,7 +18,7 @@ Part 2 ---
 4. Write trigger for custom object. On insert of custom object record if the value of 'Category' field is equal to 'Opportunity' create a new opportunity record via trigger.
    The opportunity lookup needs to be populated with this new opportunity.
 
-Part 3
+Part 3 ---
 Create a custom visualforce page and controller. Use the markup mentioned inside the <div> tags in the “sample.html” file attached along with this email to create the visualforce page. On clicking the “Submit” button, the data of the 3 fields (first name, last name and email) should be sent to the controller and create a new Contact object.
 
 Note ---
@@ -28,7 +28,6 @@ While creating the new contact, check if the user has field level visibility on 
 
 Hint ---
 On clicking the submit button, read all the string values from the input fields in the page via javascript and pass them to the visualforce page.
-
 
 Part 4 ---
 Create an unmanaged package with all the components of this exercise and send the url of the package
