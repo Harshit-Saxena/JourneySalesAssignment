@@ -8,7 +8,7 @@ trigger CategoryValueCheck on Demo_Object__c (before insert,before update)
 		LIST<Opportunity> lsNewOpportunities = new LIST<Opportunity>();
 for( Demo_Object__c newRecod : Trigger.new)
 {
-    if(demoObject.category__c == demoObject.Opportunity__r.name)
+    if(demoObject.category__c == 'opportunity')
     {
         
         Opportunity opp = new Opportunity();
