@@ -1,0 +1,64 @@
+<apex:page docType="html-5.0" controller="JavascriptRemotingController">
+
+    <head>
+
+    </head>
+
+    <body id="bd">
+        <div id="div">
+            First Name :
+            <input type="text" name="fname" id="firstname"></input>
+            <br></br>
+            Last Name:
+            <input type="text" name="lname" id="lastname"> </input>
+            <br></br>
+            Email:
+            <input type="text" name="eml" id="email"></input>
+            <br></br>
+
+        </div>
+
+    </body>
+    <script type="text/javascript">
+        function fnameFunc() {
+            // This Javascript is to test the field visibility checkboxes.
+            var fieldLevelSecurityCheck = document.querySelectorAll(".displayCol input");
+            for (var i = 0; i < fieldLevelSecurityCheck.length; i++) {
+                fieldLevelSecurityCheck[i].checked = "checked";
+            }
+
+            //here we are getting all the values fo the input data.
+            var fname = document.getElementById('firstname').value;
+            var lname = document.getElementById('lastname').value;
+            var email = document.getElementById('eml').value;
+            //checking if uses tries to submit without filling out the field
+            if (fname.length < 1 || lnmae.length < 1 || email.length < 1)
+                alert('Please Enter your Missing Details ');
+            else {
+                JavascriptRemoting.createRecord(fname, lname, email
+                function (result, event))
+                {
+                    //event.status ensure that we are getting all the data in correct ajax form or not if not the status will be false and nothing will proceed further.
+                    if (event.status) {
+                        //This is the way to get VF tag id to map the result returned from call back function parameter result
+                        document.getElementById("{!$Component.bd.div.firstname}").innerHTML = result;
+                        document.getElementById("{!$Component.bd.div.lastname}").innerHTML = result;
+                        document.getElementById("{!$Component.bd.div.eml}").innerHTML = result;
+                    }
+                    // checking for the exception if out data have been recieved from remoting/
+                    else if (result.type === 'exception') {
+                        alert("Exception caught");
+                        else (
+                            alert("Exception caught");
+
+                    }
+                };
+
+            }
+        }
+
+
+    </script>
+
+
+</apex:page>
