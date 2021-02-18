@@ -1,9 +1,18 @@
-public inherited sharing class JavascriptRemotingController {
-    public JavascriptRemotingController() {
-
-    }
-    public static string creatRecord(String fname, String lname, String email)
+global with sharing class JavascriptRemotingController {
+	@RemoteAction
+    global Static Account AccountName(String fname)
     {
-        return fname; 
+        System.debug('getAccount');
+        Account acc = new Account();
+        acc.name = fname;
+        try {
+            insert acc;
+            return acc;
+        } catch (Exception exp) {
+            System.debug('Error: ' +exp);
+            return null ; 
+            
+        }
+
     }
 }
