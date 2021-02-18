@@ -6,12 +6,14 @@
     <body id="bd">
         <script type="text/javascript">
             function AccountName() {
+                // here we are getting the id of the name=> From which we need to create an accout record.
                 var fname = document.getElementById('firstname').value;
                 Visualforce.remoting.Manager.invokeAction('{!RemoteAction.AccountRemoter.getAccount}', fname, function (result, event) {
-
+                        // event.status is checking that are we getting the desired data.
                     if (event.status) {
                         document.getElementById("{!$Component.bd.div.firstname}").innerHTML = result;
                     }
+                    // checking for exception
                     else if (result.type === 'exception') {
                         alert("Exception caught");
                     }
