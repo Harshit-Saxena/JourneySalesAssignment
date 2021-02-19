@@ -11,7 +11,7 @@
                 Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.JavascriptRemotingController.AccountName}', fname, function (result, event) {
 
                     if (event.status) {
-                        document.getElementById("{!$Component.bd.div.firstname}").innerHTML = result.Id;
+                        document.getElementById("{!$Component.bd.div.firstname}").innerHTML = result.Name;
                     }
                     else if (result.type === 'exception') {
                         alert("Exception caught on result");
