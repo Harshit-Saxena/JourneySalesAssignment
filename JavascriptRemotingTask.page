@@ -7,12 +7,22 @@
         <script type="text/javascript">
             function AccountName() {
                 console.log('hey i am accountName');
-                let fname = document.getElementById('firstname').value;
+                var fieldLevelSecurityCheck = document.querySelectorAll(".displayCol input");
+                //Some how this fieldLevelSecurityCheck is not working.
+                for (var i = 0; i < fieldLevelSecurityCheck.length; i++) {
+                    console.log('fieldLevelCheck');
+                    fieldLevelSecurityCheck[i].checked = "checked";
+                }
+                let fname = document.getElementById('firstname').value; // getting the id form the HTML markup
                 Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.JavascriptRemotingController.AccountName}', fname, function (result, event) {
+                    if (fname.length < 1)
+                        alert('Please Enter the Missing field');
 
-                    if (event.status) {
-                        document.getElementById("{!$Component.bd.div.firstname}").innerHTML = result.Name;
+
+                    else if (event.status) {
+                        document.getElementById("{!$Component.bd.div.firstname}").innerHTML = result.Name; // sending the date to the controller to create an account record.
                     }
+                    //checking for the exception.
                     else if (result.type === 'exception') {
                         alert("Exception caught on result");
                     }
@@ -23,11 +33,12 @@
                 );
             }
         </script>
+        <!-- script end  -->
         <div id="div">
             First Name :
             <input type="text" name="fname" id="firstname"></input>
             <br></br>
-            <button onclick="AccountName()">Submit</button>
+            <!-- <button onclick="AccountName()">Submit</button> calling the RemoteAction method -->
 
         </div>
     </body>
