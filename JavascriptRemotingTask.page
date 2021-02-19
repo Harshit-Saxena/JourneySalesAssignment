@@ -1,4 +1,4 @@
-<apex:page docType="html-5.0" controller="JavascriptRemotingController">
+<apex:page docType="html-5.0" controller="JavascriptRemotingController" showHeader="false">
 
     <head>
     </head>
@@ -6,27 +6,28 @@
     <body id="bd">
         <script type="text/javascript">
             function AccountName() {
-                function displayName(result, event))
-                {
+                console.log('hey i am accountName');
+                let fname = document.getElementById('firstname').value;
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.JavascriptRemotingController.AccountName}', fname, function (result, event) {
+
                     if (event.status) {
-                        document.getElementById("{!$Component.bd.div.firstname}").innerHTML = result;
+                        document.getElementById("{!$Component.bd.div.firstname}").innerHTML = result.Id;
                     }
                     else if (result.type === 'exception') {
-                        alert("Exception caught");
+                        alert("Exception caught on result");
                     }
                     else {
                         alert("Exception caught");
                     }
                 }
-                var fname = document.getElementById('firstname').value;
-
+                );
             }
         </script>
         <div id="div">
             First Name :
-            <input type="text" name="fname" id="firstname"> </input>
+            <input type="text" name="fname" id="firstname"></input>
             <br></br>
-            <button onclick="AccountName">Submit</button>
+            <button onclick="AccountName()">Submit</button>
 
         </div>
     </body>
