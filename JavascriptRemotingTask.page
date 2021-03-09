@@ -39,7 +39,7 @@
             <input type="text" name="fname" id="firstname"></input>
             <br></br>
             <!-- <button onclick="AccountName()">Submit</button> calling the RemoteAction method -->
-
+                
         </div>
     </body>
 </apex:page>
